@@ -15,11 +15,6 @@
     background-color: $gray;
     font-weight: 500;
   }
-  & tr:last-child {
-    td {
-      border-bottom: unset;
-    }
-  }
 
   &__row {
     cursor: pointer;
@@ -29,6 +24,43 @@
       background-color: $gray;
     }
   }
-
-
 }
+
+.pagination {
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  border-radius: 0.25rem;
+
+  padding: 20px 25px;
+
+  li {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+
+    &:hover {
+      color: #0056b3;
+      text-decoration: none;
+      background-color: #e9ecef;
+      border-color: #dee2e6;
+    }
+
+    &.active {
+      z-index: 3;
+      color: #fff;
+      background-color: #007bff;
+      border-color: #007bff;
+      a {
+        color: #ffffff;
+      }
+    }
+  }
+}
+

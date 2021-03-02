@@ -71,7 +71,10 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+ol,
+ul,
+dl{
   margin: 0;
   padding: 0;
 }
@@ -105,4 +108,10 @@ textarea
   -moz-box-sizing:content-box;
   box-sizing:content-box;
   border-radius: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
 }
