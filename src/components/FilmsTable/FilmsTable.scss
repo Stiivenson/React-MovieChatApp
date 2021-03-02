@@ -1,0 +1,25 @@
+@import './src/style/variables';
+
+.FilmsTable {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  & td, & th {
+    padding: 16px;
+    text-align: left;
+    overflow-wrap: break-word;
+    border-bottom: 1px solid $border-color;
+  }
+  & th {
+    background: $gray;
+    font-weight: 500;
+  }
+  & tr:last-child {
+    td {
+      border-bottom: unset;
+    }
+  }
+
+
+}
