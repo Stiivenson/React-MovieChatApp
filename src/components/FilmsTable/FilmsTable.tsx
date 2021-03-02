@@ -1,8 +1,14 @@
-import * as React from 'react';
+import React from 'react';
+
+import {IFilmItem} from '../../types/IFilmItem';
 
 import './FilmsTable.scss'
 
-const FilmsTable = () => {
+interface IFilmsTableProps {
+   filmsArray: IFilmItem[],
+}
+
+const FilmsTable:React.VFC<IFilmsTableProps> = ({filmsArray}) => {
     return (
         <table className='FilmsTable'>
             <thead className='FilmsTable__head'>
@@ -16,6 +22,19 @@ const FilmsTable = () => {
                 </tr>
             </thead>
             <tbody className='FilmsTable__body'>
+            {filmsArray.map((film, index) => (
+                <tr
+                    className='FilmsTable__row'
+                    key={index}
+                >
+                    <td>{film.title}</td>
+                    <td>{film.year}</td>
+                    <td>{film.runtime}</td>
+                    <td>{film.revenue}</td>
+                    <td>{film.rating}</td>
+                    <td>{film.genre}</td>
+                </tr>
+            ))}
             </tbody>
         </table>
     )
