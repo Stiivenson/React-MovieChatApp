@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 
 import Preloader from './components/Preloader';
 import FilmsTable from './components/FilmsTable';
+import CommentsWindow from './components/CommentsWindow';
 
 import axios from 'axios';
 import filmsData from './db/films';
@@ -13,6 +14,8 @@ import './App.scss';
 
 const App: React.VFC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [selectedFilm, setSelectedFilm] = useState<IFilmItem | null>(null);
+    const [openComments, setOpenComments] = useState<boolean>(false);
     const [films, setFilms] = useState<IFilmItem[]>([]);
 
     useEffect(() => {
@@ -40,12 +43,33 @@ const App: React.VFC = () => {
         fetchData();
     }, []);
 
+    // Animate showing CommentsWindow
+    let tableContainerClass = ['AppWrapper__table-container'];
+    let commentsContainerClass = ['AppWrapper__comments-container '];
+    if (openComments){
+        tableContainerClass.push('AppWrapper__table-container_show-comments');
+        commentsContainerClass.push('AppWrapper__comments-container_show-comments');
+    }
+    
   return (
     <div className='AppWrapper'>
-        <div className='AppWrapper__table-container'>
-            {isLoading ?  <Preloader/> : <FilmsTable filmsArray={films} />}
+        <div className={tableContainerClass.join(' ')}>
+            {isLoading
+                ?  <Preloader/>
+                :  <FilmsTable
+                    filmsArray={films}
+                    onFilmClick={(selectedFilm) => {
+                        setSelectedFilm(selectedFilm);
+                        setOpenComments(true);
+                    }}
+                />
+            }
         </div>
-        <div className='AppWrapper__comments-container'>
+        <div className={commentsContainerClass.join(' ')}>
+            <CommentsWindow
+                selectedFilm={selectedFilm}
+                onClose={() => setOpenComments(false)}
+            />
         </div>
     </div>
   );

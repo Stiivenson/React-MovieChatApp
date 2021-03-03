@@ -1,0 +1,107 @@
+@import './src/style/variables';
+
+.CommentsWindow {
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-flow: column;
+
+  background-color: $gray;
+
+  // Header styles
+
+  &__header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 25px;
+    color: #fff;
+    background-color: $blue;
+  }
+  &__title {
+    font-size: 26px;
+  }
+  &__close {
+    width: 15px;
+    height: 15px;
+    margin-left: 20px;
+    padding: 5px;
+    cursor: pointer;
+
+    path {
+      fill: #fff;
+    }
+
+    transition: transform .4s ease-in-out;
+    &:hover {
+      transform: rotate(360deg);
+    }
+  }
+
+  // Body styles
+
+  &__body {
+    flex-grow: 1;
+  }
+
+  // Footer styles
+
+  &__footer {
+    min-height: 100px;
+    padding: 20px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #fff;
+    border-top: 1px solid $border-color;
+  }
+  &__input-area {
+    width: 80%;
+    height:  80px;
+    max-height: 80px;
+    padding: 10px 30px 10px 10px;
+    resize: none;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    &:active, &:focus {
+      border-color: $blue;
+    }
+
+  }
+  &__button {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    background-color: $blue;
+    border-radius: 50px;
+
+    svg {
+      width: 30px;
+      height: auto;
+
+      path {
+        fill: #fff;
+      }
+    }
+
+    transition: background-color .1s ease-in-out;
+    &:hover {
+      background-color: $blue-dark;
+    }
+
+  }
+
+}

@@ -13,10 +13,11 @@ import './FilmsTable.scss'
 
 
 interface IFilmsTableProps {
-   filmsArray: IFilmItem[],
+    filmsArray: IFilmItem[],
+    onFilmClick: (selectedFilm: IFilmItem) => void,
 }
 
-const ITEMS_COUNT_PER_PAGE = 10;
+const ITEMS_COUNT_PER_PAGE = 9;
 const PAGE_RANGE_DISPLAYED = 10;
 
 // Get unique array of film genres -> return in form, suitable for DropDown field
@@ -35,7 +36,7 @@ function getAllGenresTypes (filmsArray: IFilmItem[]): IDropDownItem[] {
     });
 }
 
-const FilmsTable: React.VFC<IFilmsTableProps> = ({filmsArray}) => {
+const FilmsTable: React.VFC<IFilmsTableProps> = ({filmsArray, onFilmClick}) => {
 
     const [activePage, setActivePage] = useState<number>(1);
     const [searchValue, setSearchValue] = useState<string>('');
@@ -107,6 +108,7 @@ const FilmsTable: React.VFC<IFilmsTableProps> = ({filmsArray}) => {
                     <tr
                         className='FilmsTable__row'
                         key={index}
+                        onClick={() => onFilmClick(film)}
                     >
                         <td>{startPaginationIndex + index + 1}</td>
                         <td>{film.title}</td>
