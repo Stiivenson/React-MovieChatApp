@@ -4,11 +4,14 @@
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
+  table-layout: fixed;
 
   & td, & th {
     padding: 16px;
     text-align: left;
+    word-break: break-word;
     overflow-wrap: break-word;
+
     border-bottom: 1px solid $border-color;
   }
   & th {
@@ -24,14 +27,38 @@
       background-color: $gray;
     }
   }
+
+  // Set columns sizes
+
+  & th:nth-child(1) {
+    width: 5%;
+  }
+  & th:nth-child(2) {
+    width: 30%;
+  }
+  & th:nth-child(3) {
+    width: 10%;
+  }
+  & th:nth-child(4) {
+    width: 10%;
+  }
+  & th:nth-child(5) {
+    width: 10%;
+  }
+  & th:nth-child(6) {
+    width: 10%;
+  }
+  & th:nth-child(7) {
+    width: 20%;
+  }
 }
 
+// Styles for pagination
+
 .pagination {
-  display: -ms-flexbox;
   display: flex;
   list-style: none;
   border-radius: 0.25rem;
-
   padding: 20px 25px;
 
   li {

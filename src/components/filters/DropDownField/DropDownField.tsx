@@ -10,20 +10,22 @@ export interface IDropDownItem {
 }
 
 interface IDropDownFieldProps {
-    onChange?: (value: string) => void,
+    onChange: (genresArray: string[]) => void,
     options: IDropDownItem[],
 }
 
 const DropDownField: React.VFC<IDropDownFieldProps> = ({options, onChange}) => {
-
-    const [selected, setSelected] = useState([]);
-
+    const [selected, setSelected] = useState<IDropDownItem[]>([]);
     return (
         <MultiSelect
             options={options}
             value={selected}
-            onChange={setSelected}
-            labelledBy={'Select'}
+            onChange={(value: IDropDownItem[]) => {
+                setSelected(value);
+                onChange(value.map(genre => genre.value));
+            }}
+            hasSelectAll={false}
+            labelledBy='Select'
         />
     )
 }
