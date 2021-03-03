@@ -16,6 +16,7 @@ import './CommentsWindow.scss';
 interface ICommentItem {
     id: string,
     text: string,
+    name: string
 }
 
 interface ICommentsWindowProps {
@@ -120,6 +121,7 @@ const CommentsWindow: React.VFC<ICommentsWindowProps> = ({selectedFilm, onClose}
                             <CommentItem
                                 key={comment.id}
                                 text={comment.text}
+                                userName={comment.name}
                             />
                         ))
                     ) || (
@@ -151,7 +153,7 @@ const CommentsWindow: React.VFC<ICommentsWindowProps> = ({selectedFilm, onClose}
 
                             const newComment = {
                                 id: uidgener.generateSync(),
-                                name: '',
+                                name: localStorage.getItem('name') || '',
                                 text: userComment,
                             };
 

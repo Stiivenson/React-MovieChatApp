@@ -8,6 +8,7 @@ import CommentsWindow from './components/CommentsWindow';
 import axios from 'axios';
 import filmsData from './db/films';
 import {IFilmItem} from './types/IFilmItem';
+import authorizeUser from './auth/authorization';
 
 import './App.scss';
 
@@ -19,6 +20,9 @@ const App: React.VFC = () => {
     const [films, setFilms] = useState<IFilmItem[]>([]);
 
     useEffect(() => {
+        // Authorize user -> generate random name in LocaleStorage
+        authorizeUser();
+
         // Loading films
         const fetchData = async () => {
             let films = [];
