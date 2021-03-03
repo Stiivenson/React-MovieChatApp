@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import moment from 'moment';
 // @ts-ignore
 import _take from 'lodash-es/take';
 // @ts-ignore
@@ -17,7 +18,7 @@ interface IFilmsTableProps {
     onFilmClick: (selectedFilm: IFilmItem) => void,
 }
 
-const ITEMS_COUNT_PER_PAGE = 9;
+const ITEMS_COUNT_PER_PAGE = 10;
 const PAGE_RANGE_DISPLAYED = 10;
 
 // Get unique array of film genres -> return in form, suitable for DropDown field
@@ -34,6 +35,17 @@ function getAllGenresTypes (filmsArray: IFilmItem[]): IDropDownItem[] {
             value: genre as string,
         }
     });
+}
+
+function formatDuration (time: string) {
+    const dur = moment.duration(time, 'minutes');
+    const hours = dur.hours();
+    const minutes = dur.minutes();
+
+    const resHours = hours > 0 ? hours+'h' : '';
+    const resMinutes = minutes > 0 ? minutes+'m' : '';
+
+    return (resHours + ' ' + resMinutes);
 }
 
 const FilmsTable: React.VFC<IFilmsTableProps> = ({filmsArray, onFilmClick}) => {
@@ -54,7 +66,6 @@ const FilmsTable: React.VFC<IFilmsTableProps> = ({filmsArray, onFilmClick}) => {
 
         // Filter films by genres
         if (genreFilter.length > 0) {
-            console.log(genreFilter)
             filteredFilms = filteredFilms
                 .filter(film => genreFilter
                     .every(selectedGenre => film.genre
@@ -89,9 +100,7 @@ const FilmsTable: React.VFC<IFilmsTableProps> = ({filmsArray, onFilmClick}) => {
                 <tr className='FilmsTable__row'>
                     <td />
                     <td>
-                        <InputField
-                            onChange={value => setSearchValue(value)}
-                        />
+                        <InputField onChange={value => setSearchValue(value)} />
                     </td>
                     <td />
                     <td />
@@ -113,8 +122,8 @@ const FilmsTable: React.VFC<IFilmsTableProps> = ({filmsArray, onFilmClick}) => {
                         <td>{startPaginationIndex + index + 1}</td>
                         <td>{film.title}</td>
                         <td>{film.year}</td>
-                        <td>{film.runtime}</td>
-                        <td>{film.revenue}</td>
+                        <td>{formatDuration(film.runtime)}</td>
+                        <td>{!!film.revenue && (film.revenue + ' $') || '-'}</td>
                         <td>{film.rating}</td>
                         <td>{film.genre.join(', ')}</td>
                     </tr>

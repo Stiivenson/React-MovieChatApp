@@ -19,7 +19,7 @@ const CommentItem: React.VFC<ICommentItemProps> = ({text, userName}) => {
     return (
         <div className={commentItemClass.join(' ')}>
             <div className='CommentItem__avatar'>
-                {!!userName && isMyComment ? 'Y' : userName[0].toUpperCase()}
+                {!!userName && (isMyComment ? 'Y' : userName[0].toUpperCase())}
             </div>
             <div className='CommentItem__body-container'>
                 <div className='CommentItem__body'>
