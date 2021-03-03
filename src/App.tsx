@@ -57,12 +57,12 @@ const App: React.VFC = () => {
             {isLoading
                 ?  <Preloader/>
                 :  <FilmsTable
-                    filmsArray={films}
-                    onFilmClick={(selectedFilm) => {
-                        setSelectedFilm(selectedFilm);
-                        setOpenComments(true);
-                    }}
-                />
+                        filmsArray={films}
+                        onFilmClick={(selectedFilm) => {
+                            setSelectedFilm(selectedFilm);
+                            setOpenComments(true);
+                        }}
+                    />
             }
         </div>
         <div className={commentsContainerClass.join(' ')}>

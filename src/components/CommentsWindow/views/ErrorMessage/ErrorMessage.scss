@@ -1,0 +1,26 @@
+@import './src/style/variables';
+
+.ErrorMessage {
+  position: absolute;
+  left: 25%;
+  bottom: 0;
+  width: 300px;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 5px;
+
+  color: #fff;
+  text-align: center;
+  background-color: $danger;
+  border-radius: 5px;
+  box-shadow: 0 0 20px 3px rgba($danger, .5);
+
+  transition: bottom .4s ease-in-out;
+
+  &_show {
+    bottom: 150px;
+  }
+}
