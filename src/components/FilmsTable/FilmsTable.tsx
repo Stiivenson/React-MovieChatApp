@@ -7,6 +7,8 @@ import InputField from '../filters/InputField';
 import {IFilmItem} from '../../types/IFilmItem';
 
 import './FilmsTable.scss'
+import DropDownField from "../filters/DropDownField";
+import {IDropDownItem} from "../filters/DropDownField/DropDownField";
 
 
 interface IFilmsTableProps {
@@ -38,6 +40,21 @@ const FilmsTable:React.VFC<IFilmsTableProps> = ({filmsArray}) => {
     }, [searchValue]);
 
     const paginatedFilms = paginate(filteredFilms, activePage, ITEMS_COUNT_PER_PAGE);
+
+    const genresSet = new Set();
+    filmsArray.map(film => {
+        film.genre.map(genre => {
+            genresSet.add(genre);
+        })
+    })
+
+    const genresOptions = Array.from(genresSet).map((genre) => {
+        return {
+            label: genre,
+            value: genre,
+        }
+    });
+
     return (
         <>
             <table className='FilmsTable'>
@@ -61,6 +78,7 @@ const FilmsTable:React.VFC<IFilmsTableProps> = ({filmsArray}) => {
                     <td />
                     <td />
                     <td>
+                        <DropDownField options={genresOptions}/>
                     </td>
                 </tr>
                 {paginatedFilms.map((film, index) => (
