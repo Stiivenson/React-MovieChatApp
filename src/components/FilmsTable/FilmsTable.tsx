@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 // @ts-ignore
 import Pagination from 'react-js-pagination';
 // @ts-ignore
 import _take from 'lodash-es/take';
-
+import InputField from '../filters/InputField';
 import {IFilmItem} from '../../types/IFilmItem';
 
 import './FilmsTable.scss'
@@ -22,8 +22,22 @@ function paginate(items: IFilmItem[], pageNumber: number, pageSize: number): IFi
 }
 
 const FilmsTable:React.VFC<IFilmsTableProps> = ({filmsArray}) => {
+
     const [activePage, setActivePage] = useState<number>(1);
-    const paginatedFilms = paginate(filmsArray, activePage, ITEMS_COUNT_PER_PAGE)
+    const [searchValue, setSearchValue] = useState<string>('');
+    const [filteredFilms, setFilteredFilms] = useState<IFilmItem[]>([]);
+
+    useEffect(() => {
+        const filteredFilms = !!searchValue
+            ? filmsArray.filter(film =>
+                    film.title.toLowerCase().includes(searchValue))
+            : filmsArray;
+
+        setFilteredFilms(filteredFilms);
+        setActivePage(1);
+    }, [searchValue]);
+
+    const paginatedFilms = paginate(filteredFilms, activePage, ITEMS_COUNT_PER_PAGE);
     return (
         <>
             <table className='FilmsTable'>
@@ -38,6 +52,17 @@ const FilmsTable:React.VFC<IFilmsTableProps> = ({filmsArray}) => {
                 </tr>
                 </thead>
                 <tbody className='FilmsTable__body'>
+                <tr className='FilmsTable__row'>
+                    <td>
+                        <InputField onChange={(value: string) => setSearchValue(value)} />
+                    </td>
+                    <td />
+                    <td />
+                    <td />
+                    <td />
+                    <td>
+                    </td>
+                </tr>
                 {paginatedFilms.map((film, index) => (
                     <tr
                         className='FilmsTable__row'
@@ -53,14 +78,16 @@ const FilmsTable:React.VFC<IFilmsTableProps> = ({filmsArray}) => {
                 ))}
                 </tbody>
             </table>
-            <Pagination
-                className='Pagination'
-                activePage={activePage}
-                itemsCountPerPage={ITEMS_COUNT_PER_PAGE}
-                totalItemsCount={filmsArray.length}
-                pageRangeDisplayed={PAGE_RANGE_DISPLAYED}
-                onChange={(pageNumber: number) => setActivePage(pageNumber)}
-            />
+            {filteredFilms.length > PAGE_RANGE_DISPLAYED && (
+                <Pagination
+                    className='Pagination'
+                    activePage={activePage}
+                    itemsCountPerPage={ITEMS_COUNT_PER_PAGE}
+                    totalItemsCount={filteredFilms.length}
+                    pageRangeDisplayed={PAGE_RANGE_DISPLAYED}
+                    onChange={(pageNumber: number) => setActivePage(pageNumber)}
+                />
+            )}
         </>
     )
 }
