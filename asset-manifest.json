@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/React-MovieChatApp/static/css/main.93b8ada7.chunk.css",
+    "main.js": "/React-MovieChatApp/static/js/main.e2fdbfa6.chunk.js",
+    "main.js.map": "/React-MovieChatApp/static/js/main.e2fdbfa6.chunk.js.map",
+    "runtime-main.js": "/React-MovieChatApp/static/js/runtime-main.802242c9.js",
+    "runtime-main.js.map": "/React-MovieChatApp/static/js/runtime-main.802242c9.js.map",
+    "static/js/2.761aa3f4.chunk.js": "/React-MovieChatApp/static/js/2.761aa3f4.chunk.js",
+    "static/js/2.761aa3f4.chunk.js.map": "/React-MovieChatApp/static/js/2.761aa3f4.chunk.js.map",
+    "index.html": "/React-MovieChatApp/index.html",
+    "static/css/main.93b8ada7.chunk.css.map": "/React-MovieChatApp/static/css/main.93b8ada7.chunk.css.map",
+    "static/js/2.761aa3f4.chunk.js.LICENSE.txt": "/React-MovieChatApp/static/js/2.761aa3f4.chunk.js.LICENSE.txt",
+    "static/media/close.ee2dd8dd.svg": "/React-MovieChatApp/static/media/close.ee2dd8dd.svg",
+    "static/media/empty.67245910.svg": "/React-MovieChatApp/static/media/empty.67245910.svg",
+    "static/media/mail.2b417ad3.svg": "/React-MovieChatApp/static/media/mail.2b417ad3.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.802242c9.js",
+    "static/js/2.761aa3f4.chunk.js",
+    "static/css/main.93b8ada7.chunk.css",
+    "static/js/main.e2fdbfa6.chunk.js"
+  ]
+}
