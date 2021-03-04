@@ -1,7 +1,8 @@
 {
-  "name": "my-app",
+  "name": "react-movie-chat-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://stiivenson.github.io/React-MovieChatApp/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -11,6 +12,7 @@
     "@types/react-dom": "^17.0.1",
     "axios": "^0.21.1",
     "firebase": "^8.2.9",
+    "gh-pages": "^3.1.0",
     "lodash-es": "^4.17.21",
     "moment": "^2.29.1",
     "node-sass": "^5.0.0",
@@ -26,6 +28,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
