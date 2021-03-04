@@ -19,7 +19,7 @@
     font-weight: 500;
   }
 
-  &__row {
+  &__row:not(:first-child) {
     cursor: pointer;
     transition: background-color .1s ease-in;
 

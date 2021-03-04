@@ -18,7 +18,7 @@ interface IFilmsTableProps {
     onFilmClick: (selectedFilm: IFilmItem) => void,
 }
 
-const ITEMS_COUNT_PER_PAGE = 10;
+const ITEMS_COUNT_PER_PAGE = 12;
 const PAGE_RANGE_DISPLAYED = 10;
 
 // Get unique array of film genres -> return in form, suitable for DropDown field
