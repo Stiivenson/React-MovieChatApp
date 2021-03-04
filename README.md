@@ -18,7 +18,7 @@
 
 3. **App description:**
 
-- application consists of two main components - for films table and comments window;
+- application consists of two main components - films table and comments window;
 - FilmsTable:
     - table use pagination, to 'walk' through films array and show certain number of films at once;
     - table has filters:
@@ -34,7 +34,7 @@
     - your own comments have special style in CommentsWindow.
 <br />
 
-### Tips
+## Tips
 1. **I've got problems with loading films json.** My request from localhost was blocked by CORS. I solved this problem by saving all data in local json-file. It's not so good solution, but I just tried to make it working (if someone would start this app localy). By the way, in real project I would get data from private server, so there would be no problems.
 
 2. **Connecting to DB.** I decided not to load all films into DB and add comments array for each of them. Instead, when user selects a film, CommentsWindow tries to fetch data - find document in DB, by film's name and year. If DB returns nothing, a new document for selected film is created, and user can start commenting. So, if there's a film, that no one likes, DB simply wouldn't store any data about it.
