@@ -1,7 +1,7 @@
 # React-MovieChatApp
 
 Select a film and left your comment. Enjoy :)
-[`ссылка ----->`](https://stiivenson.github.io/React-MovieChatApp/)
+[`link to App ----->`](https://stiivenson.github.io/React-MovieChatApp/)
 
 ## Architecture
 
