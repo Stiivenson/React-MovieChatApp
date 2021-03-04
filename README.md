@@ -1,5 +1,8 @@
 # React-MovieChatApp
 
+Select a film and left your comment. Enjoy :)
+[`ссылка ----->`](https://stiivenson.github.io/React-MovieChatApp/)
+
 ## Architecture
 
 1. **Technology stack:**
